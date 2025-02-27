@@ -27,8 +27,11 @@ The system consists of an **Arduino Uno**, a **Fingerprint Sensor (R503)**, a **
 - **LEDs (Green & Red)** – Indicate access status.  
 - **Buzzer** – Alerts for unauthorized access attempts.  
 
-### Software  
-- **Mobile App** – Built using **Java**, enabling user registration and admin access.  
+## **Software Requirements**  
+- **Mobile App** (for user registration and admin access)  
+- **Visual Studio Code** (for development)  
+- **Java** (for the mobile app)  
+- **Bluetooth Libraries** (for communication with the Arduino)
 
 ## Applications  
 This system can be used in various real-world applications, such as:  
