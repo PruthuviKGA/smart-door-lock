@@ -37,7 +37,7 @@ This system can be used in various real-world applications, such as:
 ✔ **Secure lockers and cabinets**  
 
 ## Circuit Diagram  
-
+![Circuit Diagram](Circuit_Diagram.jpg)
 
 ## Block Diagram  
 *(To be added – Include a high-level block diagram showing system components.)*  
