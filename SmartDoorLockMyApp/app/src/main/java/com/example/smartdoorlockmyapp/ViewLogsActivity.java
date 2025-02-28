@@ -1,6 +1,8 @@
 package com.example.smartdoorlockmyapp;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -35,6 +37,8 @@ public class ViewLogsActivity extends AppCompatActivity {
     private ArrayList<LogItem> logList;
     private TextView messageTextView;
     private Button logoutButton;
+    private Handler handler = new Handler();
+    private Runnable fetchLogsRunnable;
 
 
 
@@ -54,7 +58,7 @@ public class ViewLogsActivity extends AppCompatActivity {
         logsAdapter = new LogsAdapter(logList);
         logsRecyclerView.setAdapter(logsAdapter);
 
-        // Handle Log Out Button Click
+
         int fingerprintId = getIntent().getIntExtra("FINGERPRINT_ID", -1);
 
         if (fingerprintId != -1) {
@@ -63,10 +67,17 @@ public class ViewLogsActivity extends AppCompatActivity {
         }
 
         logoutButton.setOnClickListener(v -> {
-            // Handle logout here
             Toast.makeText(ViewLogsActivity.this, "Logging out...", Toast.LENGTH_SHORT).show();
-            finish(); // or navigate to login screen if needed
+
+            // Navigate back to MainActivity
+            Intent intent = new Intent(ViewLogsActivity.this, MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+
+            finish(); // Finish the current activity
         });
+
+        startAutoRefresh();
 
         // Fetch logs from API
 //        verifyFingerprint(4);
@@ -118,9 +129,19 @@ public class ViewLogsActivity extends AppCompatActivity {
         // Add the request to the Volley request queue
         Volley.newRequestQueue(this).add(stringRequest);
     }
-
+    private void startAutoRefresh() {
+        fetchLogsRunnable = new Runnable() {
+            @Override
+            public void run() {
+                fetchLogsFromAPI();
+                handler.postDelayed(this, 5000); // Refresh every 5 seconds
+            }
+        };
+        handler.post(fetchLogsRunnable); // Start the periodic task
+    }
 
     private void fetchLogsFromAPI() {
+        logList.clear(); // Clear the existing list to avoid duplicatio
         String url = "http://172.20.10.9:8070/logs"; // Replace with your actual API URL
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,

@@ -40,7 +40,7 @@ public class LoginActivity extends AppCompatActivity {
 
         // Authentication logic
         if (username.equals("Admin") && password.equals("123")) {
-            Intent intent = new Intent(LoginActivity.this, ViewLogsActivity.class);
+            Intent intent = new Intent(LoginActivity.this, DashboardActivity.class);
             startActivity(intent);
 
             finish(); // Close login activity

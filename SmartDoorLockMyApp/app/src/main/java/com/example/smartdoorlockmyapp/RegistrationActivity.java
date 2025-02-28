@@ -40,22 +40,24 @@ public class RegistrationActivity extends AppCompatActivity {
         fingerprintButton.setOnClickListener(v -> captureFingerprint());
         registerButton.setOnClickListener(v -> registerUser());
         cancelButton.setOnClickListener(v -> finish()); // Go back
+        fingerprintId = getIntent().getIntExtra("FINGERPRINT_ID", -1);
+
+
     }
 
+    // Inside RegistrationActivity
     private void captureFingerprint() {
-        Random random = new Random();
-        fingerprintId = random.nextInt(1000); // Simulate fingerprint ID
-        new AlertDialog.Builder(this)
-                .setTitle("Fingerprint Captured")
-                .setMessage("Fingerprint ID: " + fingerprintId)
-                .setPositiveButton("OK", (dialog, which) -> dialog.dismiss())
-                .show();
+                    Intent intent = new Intent(RegistrationActivity.this, BluetoothActivityFirst.class);
+                    intent.putExtra("FINGERPRINT_TEXT", "A"); // Send "a" to BluetoothActivity
+                    startActivity(intent);
     }
+
 
     private void registerUser() {
         String username = usernameEditText.getText().toString().trim();
         String email = emailEditText.getText().toString().trim();
         System.out.println(username);
+        fingerprintId=10;
 
         if (username.isEmpty() || email.isEmpty() || fingerprintId == -1) {
             Toast.makeText(this, "All fields are required!", Toast.LENGTH_SHORT).show();
@@ -64,7 +66,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
         new Thread(() -> {
             try {
-                URL url = new URL("http://192.168.192.105:8070/user/createuser");
+                URL url = new URL("http://172.20.10.9:8070/user/createuser");
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestMethod("POST");
                 conn.setRequestProperty("Content-Type", "application/json");

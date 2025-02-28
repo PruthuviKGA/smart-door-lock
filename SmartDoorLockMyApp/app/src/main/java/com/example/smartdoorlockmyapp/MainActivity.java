@@ -18,17 +18,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button myButton = findViewById(R.id.myButton);
         Button adminButton = findViewById(R.id.adminButton);
         Button userButton = findViewById(R.id.userButton);
-        myButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Navigate to BluetoothActivity
-                Intent intent = new Intent(MainActivity.this, BluetoothActivity.class);
-                startActivity(intent);
-            }
-        });
         adminButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
