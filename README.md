@@ -6,9 +6,9 @@ The **Smart Fingerprint-Based Door Lock System** is a secure and efficient acces
 The system consists of an **Arduino Uno**, a **Fingerprint Sensor (R503)**, a **Solenoid Lock**, an **HC-06 Bluetooth Module**, LEDs, and a Buzzer. It is designed to be user-friendly, with a **mobile application** enabling user registration and admin access.  
 
 ## Functionality  
-- **User Registration:**  
-  - Users register their details and add their fingerprint via a **mobile application**.  
-  - The **admin** can log in to **view access logs and manage users**.  
+- **App Functionality:**  
+  - **Users register** their details and add their fingerprint via the fingerprint sensor.  
+  - The **admin** can log in to **view access logs**.  
 
 - **Access Control:**  
   - When a **registered user** scans their fingerprint:  
@@ -25,13 +25,16 @@ The system consists of an **Arduino Uno**, a **Fingerprint Sensor (R503)**, a **
 - **Solenoid Lock** – Locks and unlocks the door based on authentication.  
 - **HC-06 Bluetooth Module** – Facilitates communication between the Arduino and the mobile app.  
 - **LEDs (Green & Red)** – Indicate access status.  
-- **Buzzer** – Alerts for unauthorized access attempts.  
+- **Buzzer** – Alerts for unauthorized access attempts.
+- **Relay** – Acts as a switch and enables 12V to the solenoid lock when needed.
+- **Power Supply** – Provides a 12V DC current to the Solenoid lock.  
 
 ## **Software Requirements**  
-- **Mobile App** (for user registration and admin access)  
-- **Visual Studio Code** (for development)  
-- **Java** (for the mobile app)  
-- **Bluetooth Libraries** (for communication with the Arduino)
+- **Android Studio** (for mobile app development)  
+- **Visual Studio Code** (for backend development)  
+- **Java** (Used for the mobile app)
+- **Node JS** (Used for backend)  
+- **MongoDB** (Used for the database)  
 
 ## Applications  
 This system can be used in various real-world applications, such as:  
@@ -43,7 +46,7 @@ This system can be used in various real-world applications, such as:
 ![Circuit Diagram](Circuit_Diagram.jpg)
 
 ## Block Diagram  
-*(To be added – Include a high-level block diagram showing system components.)*  
+![Block Diagram](Block_diagram.png) 
 
 ## Contributors  
 This project was developed by **Group 16** from **Batch 20**:  
