@@ -48,6 +48,9 @@ This system can be used in various real-world applications, such as:
 ## Block Diagram  
 ![Block Diagram](Block_diagram.png) 
 
+## Implementation  
+![Implementation](Smart_Door_Lock_System.jpg)
+
 ## Contributors  
 This project was developed by **Group 16** from **Batch 20**:  
 
